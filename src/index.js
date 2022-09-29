@@ -1,9 +1,3 @@
-import express from "express";
-const app = express();
-
-app.get("/",(req,res)=>{
-    res.send("Pagina de inicio");
-});
-
+import app  from "./app"
 app.listen(3000)
 console.log('SERVIDOR E PUERTO ', 3000);
