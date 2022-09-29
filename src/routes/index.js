@@ -3,19 +3,23 @@ import Task from "../models/Task";
 
 const router = Router();
 
-router.get("/",(req,res)=>{
-    res.render('index');
+router.get("/",async(req,res)=>{
+    const task = await Task.find().lean();
+    //console.log(task);
+    res.render('index',{tasks: task});
     //res.send("Pagina de inicio");
 });
 
 router.post("/tasks/add",async (req,res)=>{
     const task = Task(req.body);
-    const taskSaved = await task.save();
-    console.log(taskSaved);
+    await task.save();
+    //const taskSaved = await task.save();
+    //console.log(taskSaved);
+    res.redirect("/");
 
     //console.log(task);
    //console.log(req.body);
-    res.send("Guardar Tarea");
+    //res.send("Guardar Tarea");
 });
 
 
@@ -25,9 +29,15 @@ router.get("/about",(req,res)=>{
     //res.send("Pagina de About");
 });
 
-router.get("/edit",(req,res)=>{
-    res.render('edit');
+router.get("/edit/:id",async(req,res)=>{
+    const task = await Task.findById(req.params.id).lean();
+    res.render('edit',{task});
     //res.send("Pagina de About");
+});
+
+router.post("/edit/:id",(req,res)=>{
+    console.log(req.body);
+    res.send('Recibido');
 });
 
 

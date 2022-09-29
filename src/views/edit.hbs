@@ -1,1 +1,5 @@
-<h1>Pagina de Edit</h1>
+<form action="/edit/{{task._id}}" method="POST">
+    <input type="text" name="title" placeholder="Titulo" value="{{task.title}}">
+    <textarea name="descriptin" rows="3" placeholder="Descripcion" value="{{task.description}}"></textarea>
+    <button>Editar</button>
+</form>
