@@ -6,6 +6,13 @@ router.get("/",(req,res)=>{
     //res.send("Pagina de inicio");
 });
 
+router.post("/tasks/add",(req,res)=>{
+  
+    res.send("Guardar Tarea");
+});
+
+
+
 router.get("/about",(req,res)=>{
     res.render('about');
     //res.send("Pagina de About");

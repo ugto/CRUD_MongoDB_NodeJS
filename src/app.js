@@ -3,6 +3,7 @@ import exphbs from "express-handlebars";
 import indexRoutes  from "./routes/index";
 import path from 'path';
 import { create } from 'express-handlebars';
+import morgan from "morgan";
 
 
 const app = express();
@@ -19,6 +20,9 @@ app.engine(
   );
 
 app.set("view engine",".hbs");
+
+//middlewares
+app.use(morgan('dev'));
 
 app.use(indexRoutes);
 export default app;
